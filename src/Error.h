@@ -54,7 +54,7 @@ void OnErrorStop(int err, model *cov);
 
 #define MERR(X) {LOCAL_ERRLOC_MSG; LPRINT("error msg: ");	\
     errorMSG(X, cov->err_msg, cov->base, ERRMSG); if (PL<PL_ERRORS) {PRINTF("%.50s\n", ERRMSG);}}
-#define XERR(X) {LOCAL_MSG; /* UERR; */ errorMSG(X, MSG);  RFERROR(MSG);}
+#define XERR(X) {LOCAL_MSG; /* UERR; */ errorMSG(X, MSG);  RFERROR("%s", MSG);}
 #define QERR(X) {LOCAL_ERRORSTRING; SPRINTF(cov->err_msg, "'%.50s' : %.500s", param_name, X); DEBUGINFOERR; RETURN_ERR(ERRORM);}
 #define QERRX(ERR, X) {LOCAL_ERRORSTRING; LOCAL_MSG; errorMSG(ERR, MSG); SPRINTF(cov->err_msg, "'%.50s' : %.300s (%.500s)", param_name, X, MSG); DEBUGINFOERR; RETURN_ERR(ERRORM);}
 #define QERRC(NR,X) {LOCAL_ERRORSTRING; SPRINTF(cov->err_msg, "%.50s '%.50s': %.800s", NAME(cov), DefList[COVNR].kappanames[NR], X); DEBUGINFOERR; RETURN_ERR(ERRORM);}

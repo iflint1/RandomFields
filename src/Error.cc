@@ -343,20 +343,20 @@ void OnErrorStop(int Err, errorstring_type errmsg) {
   if (Err == NOERROR) return;
   char m[MAXERRORSTRING];
   errorMSG(Err, errmsg, NULL, m, MAXERRORSTRING);
-  RFERROR(m);
+  RFERROR("%s", m);
 }
 
 void OnErrorStop(int Err, errorstring_type errmsg, KEY_type *KT) {
   if (Err == NOERROR) return;
   char m[MAXERRORSTRING];
   errorMSG(Err, errmsg, KT, m, MAXERRORSTRING);
-  RFERROR(m);
+  RFERROR("%s", m);
 }
 
 void OnErrorStop(int Err, model *cov) {
   if (Err == NOERROR) return;
   char m[MAXERRORSTRING];
   errorMSG(Err, cov->err_msg, cov->base, m, MAXERRORSTRING);
-  RFERROR(m);
+  RFERROR("%s", m);
 }
 

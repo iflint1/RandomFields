@@ -32,8 +32,8 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #include "startGetNset.h"
 
 
-#define PERR(X) {LOCAL_MSG; SPRINTF(MSG, "'%.100s': %.800s", param_name, X); RFERROR(MSG);}
-#define PERR1(X,Y) {LOCAL_MSG; LOCAL_ERRMSG2; SPRINTF(MSG, "'%.100s': %.800s", param_name, X); SPRINTF(MSG2, MSG, Y); RFERROR(MSG2);}
+#define PERR(X) {LOCAL_MSG; SPRINTF(MSG, "'%.100s': %.800s", param_name, X); RFERROR("%s", MSG);}
+#define PERR1(X,Y) {LOCAL_MSG; LOCAL_ERRMSG2; SPRINTF(MSG, "'%.100s': %.800s", param_name, X); SPRINTF(MSG2, MSG, Y); RFERROR("%s", MSG2);}
 
 
 SEXP getListElement(SEXP list, char *str) {
@@ -593,7 +593,7 @@ void CheckModel(SEXP Model, double *x, double *Y, double *T,
   PutRNGstate();// PutRNGstate muss vor UNPROTECT stehen!! -- hier irrelevant
 
   if (err != NOERROR) { 
-    RFERROR(EM2); 
+    RFERROR("%s", EM2); 
   }
 
   if (GLOBAL.internal.warn_mathdef == True) {
